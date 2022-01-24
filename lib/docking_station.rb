@@ -4,7 +4,7 @@ class DockingStation
 
   attr_reader :bikes
 
-  Capacity = 20
+  CAPACITY = 20
 
   def initialize
     @bikes = []
@@ -23,7 +23,7 @@ class DockingStation
   private
 
   def fall?
-    @bikes.count >= Capacity
+    @bikes.count >= CAPACITY
   end
 
   def empty?
