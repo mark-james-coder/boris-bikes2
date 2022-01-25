@@ -12,9 +12,9 @@ describe DockingStation do
       expect(subject.release_bike).to eq bike
     end
     it 'releases a working bike' do
-      bike = Bike.new
-      subject.dock(bike)
-      expect(subject.release_bike).to be_working
+      subject.dock double(:bike)
+      bike = subject.release_bike
+      expect(bike).to be_working
     end
     it 'does not release a broken bike' do
       bike = Bike.new

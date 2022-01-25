@@ -11,7 +11,7 @@ class Bike
   end
 
   def working?
-    true
+    false
   end
 
 end
