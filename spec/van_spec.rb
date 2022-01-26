@@ -16,4 +16,5 @@ describe Van do
     subject.load_from_garage(garage)
     expect(subject.back_of_van).to eq [bike]
   end
+  
 end
