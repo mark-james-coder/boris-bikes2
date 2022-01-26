@@ -2,7 +2,7 @@ require_relative 'bike'
 
 class DockingStation
 
-  attr_reader :bikes, :capacity
+  attr_reader :bikes, :capacity, :broken_bikes
 
   DEFAULT_CAPACITY = 20
 
@@ -20,6 +20,10 @@ class DockingStation
   def dock(bike)
     fail 'Docking station is full' if fall?
     @bikes << bike
+  end
+
+  def unload_repaired_bikes(van)
+    @bikes << van.back_of_van.delete_at(0)
   end
 
   private
