@@ -4,7 +4,7 @@ class Van
 
   attr_reader :back_of_van
 
-  DEFAULT_CAPACITY = 1
+  CAPACITY = 1
 
   def initialize
     @back_of_van = []

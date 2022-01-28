@@ -8,7 +8,4 @@ describe Bike do
     subject.report_broken
     expect(subject.condition).to eq 'broken'
   end
- it 'responds to working?' do
-   expect(subject).to respond_to :working?
- end
 end
