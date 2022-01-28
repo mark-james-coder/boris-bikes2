@@ -13,22 +13,27 @@ describe DockingStation do
     it 'releases a bike' do
       allow(bike).to receive(:condition).and_return('working')
       subject.dock bike
-      expect(subject.release_bike).to eq bike
+      expect(subject.release_bike 1).to eq bike
     end
     it 'releases a working bike' do
       allow(bike).to receive(:working?).and_return(true)
       allow(bike).to receive(:condition).and_return('working')
       subject.dock bike
-      released_bike = subject.release_bike
-      expect(released_bike).to be_working
+      expect(bike).to be_working
     end
     it 'does not release a broken bike' do
       allow(bike).to receive(:condition).and_return('broken')
       subject.dock(bike)
-      expect { subject.release_bike }.to raise_error 'No working bikes available'
+      expect { subject.release_bike(1) }.to raise_error 'No working bikes available'
     end
     it 'raises an error when there are no working bikes available' do
-      expect { subject.release_bike }.to raise_error 'No working bikes available'
+      expect { subject.release_bike(1) }.to raise_error 'No working bikes available'
+    end
+    it 'stores payment in a money container' do
+      allow(bike).to receive(:condition).and_return('working')
+      subject.dock bike
+      subject.release_bike 1
+      expect(subject.money_container[0]).to eq 1
     end
   end
 

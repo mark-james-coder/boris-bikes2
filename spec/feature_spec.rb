@@ -14,7 +14,13 @@ class FeatureTest
 
   def run_tests
     puts "First, there is a working bike."
-    puts "Then, it is reported as broken."
+    @station.dock(@bike)
+    puts "Then, it is docked at the docking station."
+    puts "A customer comes along and inserts a fee of £1 into the docking_station."
+    @station.release_bike(1)
+    puts "The bike is then released to the customer."
+    puts "You can see the docking_station now contains £#{@station.money_container[0]}"
+    puts "After, the customer reports the bike as broken."
     @bike.report_broken
     puts "You can see the condition of the bike is #{@bike.condition}"
     puts "It is docked at the docking station."
